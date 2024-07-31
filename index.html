@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech & Science Explorer</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
@@ -119,24 +123,54 @@
     <script>
         const articles = {
             ai: [
-                { title: "Intro to Machine Learning", content: "Machine learning is a subset of AI that focuses on the development of algorithms and statistical models that enable computer systems to improve their performance on a specific task through experience. This field has seen exponential growth in recent years, driving advancements in areas such as image recognition, natural language processing, and autonomous vehicles." },
-                { title: "Neural Networks Explained", content: "Neural networks are a series of algorithms that mimic the operations of a human brain to recognize relationships between vast amounts of data. They are at the heart of deep learning algorithms and have revolutionized many AI applications, from speech recognition to medical diagnosis." }
+                {
+                    title: "Intro to Machine Learning",
+                    content: "Machine learning is a subset of AI that focuses on the development of algorithms and statistical models that enable computer systems to improve their performance on a specific task through experience. This field has seen exponential growth in recent years, driving advancements in areas such as image recognition, natural language processing, and autonomous vehicles."
+                },
+                {
+                    title: "Neural Networks Explained",
+                    content: "Neural networks are a series of algorithms that mimic the operations of a human brain to recognize relationships between vast amounts of data. They are at the heart of deep learning algorithms and have revolutionized many AI applications, from speech recognition to medical diagnosis."
+                }
             ],
             lowlevel: [
-                { title: "Assembly Basics", content: "Assembly language is a low-level programming language for a computer, or other programmable device, in which there is a very strong correspondence between the language and the architecture's machine code instructions. It provides a deep understanding of how computers work at the hardware level." },
-                { title: "Reverse Engineering", content: "Reverse engineering is the process of analyzing a subject system to identify the system's components and their interrelationships and to create representations of the system in another form or at a higher level of abstraction. This technique is crucial in understanding complex systems, improving security, and developing compatible products." }
+                {
+                    title: "Assembly Basics",
+                    content: "Assembly language is a low-level programming language for a computer, or other programmable device, in which there is a very strong correspondence between the language and the architecture's machine code instructions. It provides a deep understanding of how computers work at the hardware level."
+                },
+                {
+                    title: "Reverse Engineering",
+                    content: "Reverse engineering is the process of analyzing a subject system to identify the system's components and their interrelationships and to create representations of the system in another form or at a higher level of abstraction. This technique is crucial in understanding complex systems, improving security, and developing compatible products."
+                }
             ],
             physics: [
-                { title: "Quantum Mechanics", content: "Quantum mechanics is a fundamental theory in physics that provides a description of the physical properties of nature at the scale of atoms and subatomic particles. It forms the foundation for understanding phenomena like superposition, entanglement, and wave-particle duality." },
-                { title: "String Theory", content: "String theory is a theoretical framework in physics that attempts to reconcile quantum mechanics and general relativity. It proposes that the fundamental constituents of the universe are one-dimensional 'strings' rather than point-like particles, potentially unifying all known forces of nature." }
+                {
+                    title: "Quantum Mechanics",
+                    content: "Quantum mechanics is a fundamental theory in physics that provides a description of the physical properties of nature at the scale of atoms and subatomic particles. It forms the foundation for understanding phenomena like superposition, entanglement, and wave-particle duality."
+                },
+                {
+                    title: "String Theory",
+                    content: "String theory is a theoretical framework in physics that attempts to reconcile quantum mechanics and general relativity. It proposes that the fundamental constituents of the universe are one-dimensional 'strings' rather than point-like particles, potentially unifying all known forces of nature."
+                }
             ],
             math: [
-                { title: "Calculus Fundamentals", content: "Calculus is the mathematical study of continuous change. It provides a framework for modeling systems in which there is a continual change, and gives us a way to make predictions about these systems. The two main branches, differential calculus and integral calculus, deal with rates of change and accumulation, respectively." },
-                { title: "Linear Algebra", content: "Linear algebra is the branch of mathematics concerning linear equations, linear functions, and their representations through matrices and vector spaces. It has numerous applications in abstract algebra, functional analysis, and the study of multidimensional geometry, as well as in various applied fields including physics, economics, and engineering." }
+                {
+                    title: "Calculus Fundamentals",
+                    content: "Calculus is the mathematical study of continuous change. It provides a framework for modeling systems in which there is a continual change, and gives us a way to make predictions about these systems. The two main branches, differential calculus and integral calculus, deal with rates of change and accumulation, respectively."
+                },
+                {
+                    title: "Linear Algebra",
+                    content: "Linear algebra is the branch of mathematics concerning linear equations, linear functions, and their representations through matrices and vector spaces. It has numerous applications in abstract algebra, functional analysis, and the study of multidimensional geometry, as well as in various applied fields including physics, economics, and engineering."
+                }
             ],
             chemistry: [
-                { title: "Organic Chemistry", content: "Organic chemistry is the study of the structure, properties, composition, reactions, and synthesis of organic compounds, which contain carbon. It forms the foundation for understanding biochemistry and is crucial in fields such as pharmaceuticals, plastics, and food science." },
-                { title: "Biochemistry", content: "Biochemistry is the study of chemical processes within and relating to living organisms. A key area of biochemistry is metabolism, which consists of the set of life-sustaining chemical reactions in organisms. Understanding metabolism is crucial for fields like medicine, nutrition, and biotechnology." }
+                {
+                    title: "Organic Chemistry",
+                    content: "Organic chemistry is the study of the structure, properties, composition, reactions, and synthesis of organic compounds, which contain carbon. It forms the foundation for understanding biochemistry and is crucial in fields such as pharmaceuticals, plastics, and food science."
+                },
+                {
+                    title: "Biochemistry",
+                    content: "Biochemistry is the study of chemical processes within and relating to living organisms. A key area of biochemistry is metabolism, which consists of the set of life-sustaining chemical reactions in organisms. Understanding metabolism is crucial for fields like medicine, nutrition, and biotechnology."
+                }
             ]
         };
 
