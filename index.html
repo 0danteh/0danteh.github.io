@@ -5,15 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech & Science Explorer</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; max-width: 800px; margin: auto; }
-        nav { margin-bottom: 20px; }
-        nav a { margin-right: 10px; }
-        .article-list { list-style-type: none; padding: 0; }
-        .article-list li { margin-bottom: 10px; }
-        .back-button { display: inline-block; margin-bottom: 10px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            background-color: #34495e;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #3498db;
+        }
+        main {
+            flex: 1;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        .article-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .article-list li {
+            margin-bottom: 1rem;
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .article-list li:hover {
+            transform: translateY(-3px);
+        }
+        .article-list a {
+            display: block;
+            padding: 1rem;
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-button {
+            display: inline-block;
+            margin-bottom: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+        article {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Tech & Science Explorer</h1>
+    </header>
     <nav>
         <a href="#/ai">AI</a>
         <a href="#/lowlevel">Low-level Coding</a>
@@ -24,34 +112,38 @@
 
     <main id="content"></main>
 
+    <footer>
+        <p>&copy; 2023 Tech & Science Explorer. All rights reserved.</p>
+    </footer>
+
     <script>
         const articles = {
             ai: [
-                { title: "Intro to Machine Learning", content: "Machine learning is a subset of AI..." },
-                { title: "Neural Networks Explained", content: "Neural networks are a series of algorithms..." }
+                { title: "Intro to Machine Learning", content: "Machine learning is a subset of AI that focuses on the development of algorithms and statistical models that enable computer systems to improve their performance on a specific task through experience. This field has seen exponential growth in recent years, driving advancements in areas such as image recognition, natural language processing, and autonomous vehicles." },
+                { title: "Neural Networks Explained", content: "Neural networks are a series of algorithms that mimic the operations of a human brain to recognize relationships between vast amounts of data. They are at the heart of deep learning algorithms and have revolutionized many AI applications, from speech recognition to medical diagnosis." }
             ],
             lowlevel: [
-                { title: "Assembly Basics", content: "Assembly language is a low-level programming language..." },
-                { title: "Reverse Engineering", content: "Reverse engineering is the process of..." }
+                { title: "Assembly Basics", content: "Assembly language is a low-level programming language for a computer, or other programmable device, in which there is a very strong correspondence between the language and the architecture's machine code instructions. It provides a deep understanding of how computers work at the hardware level." },
+                { title: "Reverse Engineering", content: "Reverse engineering is the process of analyzing a subject system to identify the system's components and their interrelationships and to create representations of the system in another form or at a higher level of abstraction. This technique is crucial in understanding complex systems, improving security, and developing compatible products." }
             ],
             physics: [
-                { title: "Quantum Mechanics", content: "Quantum mechanics is a fundamental theory in physics..." },
-                { title: "String Theory", content: "String theory is a theoretical framework..." }
+                { title: "Quantum Mechanics", content: "Quantum mechanics is a fundamental theory in physics that provides a description of the physical properties of nature at the scale of atoms and subatomic particles. It forms the foundation for understanding phenomena like superposition, entanglement, and wave-particle duality." },
+                { title: "String Theory", content: "String theory is a theoretical framework in physics that attempts to reconcile quantum mechanics and general relativity. It proposes that the fundamental constituents of the universe are one-dimensional 'strings' rather than point-like particles, potentially unifying all known forces of nature." }
             ],
             math: [
-                { title: "Calculus Fundamentals", content: "Calculus is the mathematical study of continuous change..." },
-                { title: "Linear Algebra", content: "Linear algebra is the branch of mathematics..." }
+                { title: "Calculus Fundamentals", content: "Calculus is the mathematical study of continuous change. It provides a framework for modeling systems in which there is a continual change, and gives us a way to make predictions about these systems. The two main branches, differential calculus and integral calculus, deal with rates of change and accumulation, respectively." },
+                { title: "Linear Algebra", content: "Linear algebra is the branch of mathematics concerning linear equations, linear functions, and their representations through matrices and vector spaces. It has numerous applications in abstract algebra, functional analysis, and the study of multidimensional geometry, as well as in various applied fields including physics, economics, and engineering." }
             ],
             chemistry: [
-                { title: "Organic Chemistry", content: "Organic chemistry is the study of compounds containing carbon..." },
-                { title: "Biochemistry", content: "Biochemistry is the study of chemical processes within living organisms..." }
+                { title: "Organic Chemistry", content: "Organic chemistry is the study of the structure, properties, composition, reactions, and synthesis of organic compounds, which contain carbon. It forms the foundation for understanding biochemistry and is crucial in fields such as pharmaceuticals, plastics, and food science." },
+                { title: "Biochemistry", content: "Biochemistry is the study of chemical processes within and relating to living organisms. A key area of biochemistry is metabolism, which consists of the set of life-sustaining chemical reactions in organisms. Understanding metabolism is crucial for fields like medicine, nutrition, and biotechnology." }
             ]
         };
 
         function showSection(section) {
             const content = document.getElementById('content');
             content.innerHTML = `
-                <h2>${section} Articles</h2>
+                <h2>${section.charAt(0).toUpperCase() + section.slice(1)} Articles</h2>
                 <ul class="article-list">
                     ${articles[section].map((article, index) => 
                         `<li><a href="#/${section}/${index}">${article.title}</a></li>`
@@ -60,13 +152,15 @@
             `;
         }
 
-        function showArticle(section, index) {
+function showArticle(section, index) {
             const article = articles[section][index];
             const content = document.getElementById('content');
             content.innerHTML = `
-                <a href="#/${section}" class="back-button">Back to ${section} Articles</a>
-                <h2>${article.title}</h2>
-                <p>${article.content}</p>
+                <a href="#/${section}" class="back-button">Back to ${section.charAt(0).toUpperCase() + section.slice(1)} Articles</a>
+                <article>
+                    <h2>${article.title}</h2>
+                    <p>${article.content}</p>
+                </article>
             `;
         }
 
