@@ -92,11 +92,11 @@
     
     <nav>
         <ul>
-            <li><a href="#" onclick="loadSection('ai')">AI</a></li>
-            <li><a href="#" onclick="loadSection('lowlevel')">Low-level Coding</a></li>
-            <li><a href="#" onclick="loadSection('physics')">Physics</a></li>
-            <li><a href="#" onclick="loadSection('math')">Mathematics</a></li>
-            <li><a href="#" onclick="loadSection('chemistry')">Chemistry</a></li>
+            <li><a href="#/ai">AI</a></li>
+            <li><a href="#/lowlevel">Low-level Coding</a></li>
+            <li><a href="#/physics">Physics</a></li>
+            <li><a href="#/math">Mathematics</a></li>
+            <li><a href="#/chemistry">Chemistry</a></li>
         </ul>
     </nav>
 
@@ -147,9 +147,8 @@
             articles[section].forEach((article, index) => {
                 const li = document.createElement('li');
                 const a = document.createElement('a');
-                a.href = '#';
+                a.href = `#/${section}/${index}`;
                 a.textContent = article.title;
-                a.onclick = () => loadArticle(section, index);
                 li.appendChild(a);
                 articleList.appendChild(li);
             });
@@ -165,8 +164,23 @@
             `;
         }
 
-        // Load AI section by default
-        loadSection('ai');
+        function router() {
+            const hash = window.location.hash.slice(1);
+            const [section, articleIndex] = hash.split('/').slice(1);
+
+            if (section && articles[section]) {
+                loadSection(section);
+                if (articleIndex !== undefined) {
+                    loadArticle(section, articleIndex);
+                }
+            } else {
+                // Default to AI section if no valid section is specified
+                loadSection('ai');
+            }
+        }
+
+        window.addEventListener('hashchange', router);
+        window.addEventListener('load', router);
     </script>
 </body>
 </html>
