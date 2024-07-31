@@ -17,7 +17,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: #121212;
+            background: #181818;
         }
         header {
             background-color: #1e1e1e;
@@ -48,7 +48,6 @@
             padding: 0 20px;
             background: #1e1e1e;
             border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
         }
         .article-list {
             display: flex;
@@ -62,16 +61,12 @@
             background: #1e1e1e;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
         }
         .article-list li:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
         }
         .article-list a {
             display: block;
@@ -79,12 +74,15 @@
             color: #e0e0e0;
             text-decoration: none;
             font-weight: bold;
-            background: linear-gradient(135deg, #1e1e1e, #2c3e50);
+            background: #2c3e50;
             border-radius: 12px;
             transition: background 0.3s ease;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
         }
         .article-list a:hover {
-            background: #2c3e50;
+            background: #34495e;
         }
         .back-button {
             display: inline-block;
@@ -106,10 +104,10 @@
             padding-bottom: 0.5rem;
         }
         article {
-            background: #1e1e1e;
+            background: #2c3e50;
             padding: 2rem;
             border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
         footer {
             background-color: #1e1e1e;
