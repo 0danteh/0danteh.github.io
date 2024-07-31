@@ -39,33 +39,25 @@
             font-weight: bold;
         }
         main {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 2rem auto;
             padding: 0 2rem;
-            display: flex;
         }
         .article-list {
-            flex: 1;
-            margin-right: 2rem;
-        }
-        .article-list h2 {
-            margin-bottom: 1rem;
-        }
-        .article-list ul {
             list-style-type: none;
         }
         .article-list li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
         .article-list a {
             color: #2c3e50;
             text-decoration: none;
+            font-size: 1.2rem;
         }
         .article-list a:hover {
             text-decoration: underline;
         }
         .article-content {
-            flex: 2;
             background-color: #fff;
             padding: 2rem;
             border-radius: 5px;
@@ -76,12 +68,24 @@
             height: auto;
             margin-bottom: 1rem;
         }
+        .article-content h1 {
+            margin-bottom: 1rem;
+        }
         footer {
             background-color: #2c3e50;
             color: #ecf0f1;
             text-align: center;
             padding: 1rem;
             margin-top: 2rem;
+        }
+        .back-button {
+            display: inline-block;
+            margin-bottom: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
         }
     </style>
 </head>
@@ -100,14 +104,8 @@
         </ul>
     </nav>
 
-    <main>
-        <div class="article-list">
-            <h2 id="section-title">Articles</h2>
-            <ul id="articles"></ul>
-        </div>
-        <div class="article-content" id="article-content">
-            <p>Select an article to read.</p>
-        </div>
+    <main id="main-content">
+        <!-- Content will be dynamically inserted here -->
     </main>
 
     <footer>
@@ -117,50 +115,49 @@
     <script>
         const articles = {
             ai: [
-                { title: "Introduction to Machine Learning", content: "Machine learning is a subset of AI...", image: "ml.jpg" },
-                { title: "Neural Networks Explained", content: "Neural networks are a series of algorithms...", image: "nn.jpg" }
+                { title: "Introduction to Machine Learning", content: "Machine learning is a subset of AI that focuses on the development of algorithms and statistical models that enable computer systems to improve their performance on a specific task through experience. This field has seen exponential growth in recent years, driving advancements in areas such as image recognition, natural language processing, and autonomous vehicles.", image: "ml.jpg" },
+                { title: "Neural Networks Explained", content: "Neural networks are a series of algorithms that mimic the operations of a human brain to recognize relationships between vast amounts of data. They are at the heart of deep learning algorithms and have revolutionized many AI applications, from speech recognition to medical diagnosis.", image: "nn.jpg" }
             ],
             lowlevel: [
-                { title: "Assembly Language Basics", content: "Assembly language is a low-level programming language...", image: "assembly.jpg" },
-                { title: "Reverse Engineering Techniques", content: "Reverse engineering is the process of...", image: "reverse.jpg" }
+                { title: "Assembly Language Basics", content: "Assembly language is a low-level programming language for a computer, or other programmable device, in which there is a very strong correspondence between the language and the architecture's machine code instructions. It provides a deep understanding of how computers work at the hardware level.", image: "assembly.jpg" },
+                { title: "Reverse Engineering Techniques", content: "Reverse engineering is the process of analyzing a subject system to identify the system's components and their interrelationships and to create representations of the system in another form or at a higher level of abstraction. This technique is crucial in understanding complex systems, improving security, and developing compatible products.", image: "reverse.jpg" }
             ],
             physics: [
-                { title: "Quantum Mechanics Overview", content: "Quantum mechanics is a fundamental theory in physics...", image: "quantum.jpg" },
-                { title: "String Theory Explained", content: "String theory is a theoretical framework in physics...", image: "string.jpg" }
+                { title: "Quantum Mechanics Overview", content: "Quantum mechanics is a fundamental theory in physics that provides a description of the physical properties of nature at the scale of atoms and subatomic particles. It forms the foundation for understanding phenomena like superposition, entanglement, and wave-particle duality.", image: "quantum.jpg" },
+                { title: "String Theory Explained", content: "String theory is a theoretical framework in physics that attempts to reconcile quantum mechanics and general relativity. It proposes that the fundamental constituents of the universe are one-dimensional 'strings' rather than point-like particles, potentially unifying all known forces of nature.", image: "string.jpg" }
             ],
             math: [
-                { title: "Calculus Fundamentals", content: "Calculus is the mathematical study of continuous change...", image: "calculus.jpg" },
-                { title: "Linear Algebra Applications", content: "Linear algebra is the branch of mathematics...", image: "linear.jpg" }
+                { title: "Calculus Fundamentals", content: "Calculus is the mathematical study of continuous change. It provides a framework for modeling systems in which there is a continual change, and gives us a way to make predictions about these systems. The two main branches, differential calculus and integral calculus, deal with rates of change and accumulation, respectively.", image: "calculus.jpg" },
+                { title: "Linear Algebra Applications", content: "Linear algebra is the branch of mathematics concerning linear equations, linear functions, and their representations through matrices and vector spaces. It has numerous applications in abstract algebra, functional analysis, and the study of multidimensional geometry, as well as in various applied fields including physics, economics, and engineering.", image: "linear.jpg" }
             ],
             chemistry: [
-                { title: "Organic Chemistry Basics", content: "Organic chemistry is the study of compounds containing carbon...", image: "organic.jpg" },
-                { title: "Biochemistry and Metabolism", content: "Biochemistry is the study of chemical processes within living organisms...", image: "biochem.jpg" }
+                { title: "Organic Chemistry Basics", content: "Organic chemistry is the study of the structure, properties, composition, reactions, and synthesis of organic compounds, which contain carbon. It forms the foundation for understanding biochemistry and is crucial in fields such as pharmaceuticals, plastics, and food science.", image: "organic.jpg" },
+                { title: "Biochemistry and Metabolism", content: "Biochemistry is the study of chemical processes within and relating to living organisms. A key area of biochemistry is metabolism, which consists of the set of life-sustaining chemical reactions in organisms. Understanding metabolism is crucial for fields like medicine, nutrition, and biotechnology.", image: "biochem.jpg" }
             ]
         };
 
         function loadSection(section) {
-            const articleList = document.getElementById('articles');
-            const sectionTitle = document.getElementById('section-title');
-            articleList.innerHTML = '';
-            sectionTitle.textContent = section.charAt(0).toUpperCase() + section.slice(1) + " Articles";
-            
-            articles[section].forEach((article, index) => {
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.href = `#/${section}/${index}`;
-                a.textContent = article.title;
-                li.appendChild(a);
-                articleList.appendChild(li);
-            });
+            const mainContent = document.getElementById('main-content');
+            mainContent.innerHTML = `
+                <h2>${section.charAt(0).toUpperCase() + section.slice(1)} Articles</h2>
+                <ul class="article-list">
+                    ${articles[section].map((article, index) => `
+                        <li><a href="#/${section}/${index}">${article.title}</a></li>
+                    `).join('')}
+                </ul>
+            `;
         }
 
-        function loadArticle(section, index) {
+function loadArticle(section, index) {
             const article = articles[section][index];
-            const content = document.getElementById('article-content');
-            content.innerHTML = `
-                <h2>${article.title}</h2>
-                <img src="${article.image}" alt="${article.title}">
-                <p>${article.content}</p>
+            const mainContent = document.getElementById('main-content');
+            mainContent.innerHTML = `
+                <a href="#/${section}" class="back-button">Back to ${section.charAt(0).toUpperCase() + section.slice(1)} Articles</a>
+                <article class="article-content">
+                    <h1>${article.title}</h1>
+                    <img src="${article.image}" alt="${article.title}">
+                    <p>${article.content}</p>
+                </article>
             `;
         }
 
@@ -169,9 +166,10 @@
             const [section, articleIndex] = hash.split('/').slice(1);
 
             if (section && articles[section]) {
-                loadSection(section);
                 if (articleIndex !== undefined) {
                     loadArticle(section, articleIndex);
+                } else {
+                    loadSection(section);
                 }
             } else {
                 // Default to AI section if no valid section is specified
